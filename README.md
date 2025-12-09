@@ -57,3 +57,29 @@
 
 
 
+## 💡 How to Use (Example Code)
+```python
+from huggingface_hub import hf_hub_download
+import joblib
+import pandas as pd
+# Download and load the trained pipeline
+pipeline_path = hf_hub_download("DarkNeuron-AI/darkneuron-hydrasense-v1", "water_potability_model.pkl")
+model = joblib.load(pipeline_path)
+# Example water sample
+sample_data = {
+    'ph': [7.2],
+    'Hardness': [180],
+    'Solids': [15000],
+    'Chloramines': [8.3],
+    'Sulfate': [350],
+    'Conductivity': [450],
+    'Organic_carbon': [10],
+    'Trihalomethanes': [70],
+    'Turbidity': [3]
+}
+sample_df = pd.DataFrame(sample_data)
+# Predict potability
+prediction = model.predict(sample_df)
+print("Prediction:", "💧 Potable" if prediction[0] == 1 else "⚠️ Not Potable")
+```
+
