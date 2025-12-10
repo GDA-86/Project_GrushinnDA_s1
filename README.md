@@ -57,7 +57,7 @@
 
 
 
-## 💡 How to Use (Example Code)
+## 💡 Пример использования модели
 ```python
 from huggingface_hub import hf_hub_download
 import joblib
